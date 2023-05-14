@@ -2,11 +2,11 @@
 
 # some imports here
 import requests
-from data import frames
+from data.frames import mapping
 from bs4 import BeautifulSoup
 
 # data
-frames_ = frames.mapping
+frames = mapping
 
 # functions here
 def process_image(img):
@@ -27,4 +27,6 @@ def get_new_filename(filename):
 # fetching results
 def fetch_lenses_from_lenskart(type):
     response = requests.get(frames[type])
-    soup = BeautifulSoup()
+    soup = BeautifulSoup(response.text, 'html.parser').find_all("img-responsive")
+    lenses = [data['src'] for data in soup if 'src' in data.attrs]
+    return lenses

@@ -25,7 +25,7 @@ def start(host="localhost", port=80, debug=True):
 # index page
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('old_index.html')
 
 # upload
 @app.route('/upload', methods=['POST'])
@@ -59,8 +59,10 @@ def upload():
 
 
 # results
-@app.route('/results/<type>', methods=['GET'])
+@app.route('/results/<string:type>', methods=['GET'])
 def results(type):
+    if type not in ['c1','c2','c3','c4','c5','c6','c7']:
+        return render_template('results.html')
     lenses = fetch_lenses_from_lenskart(type)
     return render_template('results.html', lenses=lenses)
 

@@ -1,6 +1,7 @@
 # image processing script
 
 # some imports here
+import requests
 
 
 
@@ -20,3 +21,5 @@ def get_new_filename(filename):
     number += 1 
     return f"image{number}.{filename.split('.')[-1].lower()}"
 
+def fetch_lenses_from_lenskart():
+    pass

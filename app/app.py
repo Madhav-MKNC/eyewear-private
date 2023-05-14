@@ -8,7 +8,7 @@ from flask import render_template, redirect, request, url_for, send_file
 from werkzeug.utils import secure_filename
 
 from PIL import Image
-from image_process import process_image, allowed_file, get_new_filename
+from utils import *
 
 app = Flask(__name__)
 
@@ -55,6 +55,14 @@ def upload():
 
     # Send the processed image file to the user's browser
     return send_file(os.path.join('uploads', filename), mimetype='image/png')
+
+
+# results
+@app.route('/results', methods=['GET'])
+def results():
+    lenses = fetch_lenses_from_lenskart()
+    return render_template('results.html', lenses=lenses)
+
 
 
 

@@ -1,7 +1,5 @@
 # Personalized Eyewear recommendation Engine
 
-<p>Sure, I'd be happy to help you prepare documentation for your project. Here is an outline of what your
-    documentation could include:</p>
 <ol>
     <li>
         <p>Introduction: In this section, you should provide an overview of the project, including the problem
@@ -37,5 +35,3 @@
             including any research papers, software libraries, or other resources.</p>
     </li>
 </ol>
-<p>Overall, your documentation should be clear, concise, and well-organized, with a focus on the key aspects of your
-    project that are most important to your audience. Good luck with your project!</p>

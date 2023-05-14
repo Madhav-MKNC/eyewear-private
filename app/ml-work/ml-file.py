@@ -43,7 +43,6 @@ def cont_compare(a,b):
 #     path = s+str(i)+".png"
     
 def get_contour(img):
-
     # img = cv2.imread(path)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(gray, 100, 200)
@@ -55,8 +54,7 @@ def get_contour(img):
 
 def detect_faces(photo, bucket, region):
     
-    session = boto3.Session(profile_name='Areeb',
-                            region_name=region)
+    session = boto3.Session(aws_access_key_id="AKIAVW7SPEUP2FSXOFE6", aws_secret_access_key="oBu00ifhbExIF94zVJWI2ob5fuPZEOHFrupJJs2", region_name=region)
     client = session.client('rekognition', region_name=region)
 
     response = client.detect_faces(Image={'S3Object':{'Bucket':bucket,'Name':photo}},

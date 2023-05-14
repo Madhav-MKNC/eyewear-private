@@ -21,10 +21,11 @@ def start(host="localhost", port=80, debug=True):
 
 
 """ /routes """
-# home page
+
+# index page
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return render_template('index.html')
 
 # upload
 @app.route('/upload', methods=['POST'])
@@ -58,9 +59,9 @@ def upload():
 
 
 # results
-@app.route('/results', methods=['GET'])
-def results():
-    lenses = fetch_lenses_from_lenskart()
+@app.route('/results/<type>', methods=['GET'])
+def results(type):
+    lenses = fetch_lenses_from_lenskart(type)
     return render_template('results.html', lenses=lenses)
 
 

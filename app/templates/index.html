@@ -1,16 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html>
 
 <head>
-    <title>Upload Image</title>
+    <title>Simple web Development Template</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script>
+        // CAMERA SETTINGS.
+        Webcam.set({
+            width: 220,
+            height: 190,
+            image_format: 'jpeg',
+            jpeg_quality: 100
+        });
+        Webcam.attach('#button');
+
+        // TAKE A SNAPSHOT.
+        takeSnapShot = function () {
+            Webcam.snap(function (data_uri) {
+                downloadImage('arun', data_uri);
+            });
+        }
+
+        // DOWNLOAD THE IMAGE.
+        downloadImage = function (name, datauri) {
+            var a = document.createElement('a');
+            a.setAttribute('download', name + '.png');
+            a.setAttribute('href', datauri);
+            a.click();
+        }
+
+        function myFunction() {
+            var input = document.getElementById("button");
+        }
+
+    </script>
+
 </head>
 
-<body>
+<body scroll="no" style="overflow: hidden">
+    <nav class="navbar background">
+        <ul class="nav-list">
+            <div class="logo">
+                <img src="logo.png">
+            </div>
+            <li><a href="#web">Prescription Lenses</a></li>
+            <li><a href="#program">Sunglasses</a></li>
+            <li><a href="#course">Contact Lenses</a></li>
+        </ul>
+
+        <div class="rightNav">
+            <input type="text" name="search" id="search">
+            <button class="btn btn-sm" style="transform: translateY(-2px);">Search</button>
+        </div>
+    </nav>
+
+    <section class="firstsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="web">Generate Eyeware</h1>
+                <p class="text-small">
+                    Personalised eyeware selected specially for you. We believe that this choice of ours will enchance
+                    your experience on this platform. Thank you for shopping with us!
+                </p>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- UPLOAD -->
     <h1>Upload Image</h1>
     <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
-        <input type="file" name="file" id="file">
-        <button type="submit">Upload</button>
+        <input type="file" name="file" id="button" class="start_button">
+        <button type="submit" class="fa-solid fa-upload">Upload</button>
     </form>
+
+    <section class="section">
+
+        <div class="paras">
+            <h1 class="sectionTag text-big">Lenskart<sup style="font-size:10px;">TM</sup></h1>
+
+            <p class="sectionSubTag text-small">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ex, corporis reprehenderit porro ad
+                eveniet mollitia odio blanditiis assumenda magnam explicabo non sapiente modi corrupti, beatae minus,
+                aut nam accusamus?
+            </p>
+        </div>
+
+
+    </section>
+
+    <footer class="background">
+        <p class="text-footer">
+            Copyright ©-All rights are reserved
+        </p>
+
+
+    </footer>
 </body>
 
 </html>

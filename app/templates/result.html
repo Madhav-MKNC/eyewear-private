@@ -1,38 +1,39 @@
 <!DOCTYPE html>
- 
+
 <html>
- 
+
 <head>
     <title>Simple web Development Template</title>
     <link rel="stylesheet" type="text/css" href="style2.css">
 
-	<script>
-		// CAMERA SETTINGS.
-		Webcam.set({
-			width: 220,
-			height: 190,
-			image_format: 'jpeg',
-			jpeg_quality: 100
-		});
-		Webcam.attach('#button');
+    <script>
+        // CAMERA SETTINGS.
+        Webcam.set({
+            width: 220,
+            height: 190,
+            image_format: 'jpeg',
+            jpeg_quality: 100
+        });
+        Webcam.attach('#button');
 
-		// TAKE A SNAPSHOT.
-		takeSnapShot = function () {
-			Webcam.snap(function (data_uri) {
-				downloadImage('arun', data_uri);
-			});
-		}
+        // TAKE A SNAPSHOT.
+        takeSnapShot = function () {
+            Webcam.snap(function (data_uri) {
+                downloadImage('arun', data_uri);
+            });
+        }
 
-		// DOWNLOAD THE IMAGE.
-		downloadImage = function (name, datauri) {
-			var a = document.createElement('a');
-			a.setAttribute('download', name + '.png');
-			a.setAttribute('href', datauri);
-			a.click();
-		}
+        // DOWNLOAD THE IMAGE.
+        downloadImage = function (name, datauri) {
+            var a = document.createElement('a');
+            a.setAttribute('download', name + '.png');
+            a.setAttribute('href', datauri);
+            a.click();
+        }
 
-		function myFunction() {
-        var input = document.getElementById("button");}
+        function myFunction() {
+            var input = document.getElementById("button");
+        }
     //     input.addEventListener('change', (event) => {
     // const image = event.target.files[0];
 
@@ -45,10 +46,10 @@
     // });
     // });
 	// 	}
-	</script>
+    </script>
 
 </head>
- 
+
 <body scroll="no" style="overflow: hidden">
     <nav class="navbar background">
         <ul class="nav-list">
@@ -59,47 +60,43 @@
             <li><a href="#program">Sunglasses</a></li>
             <li><a href="#course">Contact Lenses</a></li>
         </ul>
- 
+
         <div class="rightNav">
             <input type="text" name="search" id="search">
             <button class="btn btn-sm">Search</button>
         </div>
     </nav>
- 
+
     <section class="firstsection">
-        <div class="glass1" id="glass">
-            <a href="https://www.Youtube.com/"><img src="glass1.jpg" alt="" height="250px" width="250px"></a>
-        </div>
-        <div class="glass2" id="glass">
-            <a href="https://www.lenskart.com/vincent-chase-vc-e15725-c2-eyeglasses.html"><img src="glass1.jpg" alt="" height="250px" width="250px"></a>
-        </div>
-        <div class="glass3" id="glass">
-            <a href="https://www.Youtube.com/"><img src="glass1.jpg" alt="" height="250px" width="250px"></a>
-        </div>
+        {% for lens in lenses %}
+        <a href="{{ lens.url }}"><img src="{{ lens.img_url }}"></a>
+        {% endfor %}
     </section>
-	
+
     <section class="section">
-		
+
         <div class="paras">
             <h1 class="sectionTag text-big">Lenskart<sup style="font-size:10px;">TM</sup></h1>
- 
+
             <p class="sectionSubTag text-small">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ex, corporis reprehenderit porro ad eveniet mollitia odio blanditiis assumenda magnam explicabo non sapiente modi corrupti, beatae minus, aut nam accusamus?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi ex, corporis reprehenderit porro ad
+                eveniet mollitia odio blanditiis assumenda magnam explicabo non sapiente modi corrupti, beatae minus,
+                aut nam accusamus?
             </p>
- 
- 
+
+
         </div>
- 
-        
+
+
     </section>
- 
-    <footer class="background" >
-        <p class="text-footer" style="transform: translateX(490px);display: inline-block;" >
+
+    <footer class="background">
+        <p class="text-footer" style="transform: translateX(490px);display: inline-block;">
             Copyright ©-All rights are reserved
         </p>
- 
- 
+
+
     </footer>
 </body>
- 
+
 </html>

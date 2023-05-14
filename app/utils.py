@@ -2,8 +2,11 @@
 
 # some imports here
 import requests
+from data import frames
+from bs4 import BeautifulSoup
 
-
+# data
+frames_ = frames.mapping
 
 # functions here
 def process_image(img):
@@ -21,5 +24,7 @@ def get_new_filename(filename):
     number += 1 
     return f"image{number}.{filename.split('.')[-1].lower()}"
 
-def fetch_lenses_from_lenskart():
-    pass
+# fetching results
+def fetch_lenses_from_lenskart(type):
+    response = requests.get(frames[type])
+    soup = BeautifulSoup()

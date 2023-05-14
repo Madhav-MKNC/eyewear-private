@@ -44,9 +44,9 @@
             <div class="logo">
                 <img src="../static/imgs/logo.png">
             </div>
-            <li><a href="#web">Prescription Lenses</a></li>
-            <li><a href="#program">Sunglasses</a></li>
-            <li><a href="#course">Contact Lenses</a></li>
+            <li><a href="https://www.lenskart.com/eyeglasses.html">Prescription Lenses</a></li>
+            <li><a href="https://www.lenskart.com/sunglasses.html">Sunglasses</a></li>
+            <li><a href="https://www.lenskart.com/contact-lenses.html">Contact Lenses</a></li>
         </ul>
 
         <div class="rightNav">
@@ -71,9 +71,9 @@
 
     <!-- UPLOAD -->
     <h1>Upload Image</h1>
-    <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data" class="start_button" align="center">
-        <input type="file" name="file" id="button" class="start_button" align="center">
-        <button type="submit" class="fa-solid fa-upload">Upload</button>
+    <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+        <input type="file" class="start_button" id="button">
+        <button type="submit">Upload</button>
     </form>
 
     <section class="section">

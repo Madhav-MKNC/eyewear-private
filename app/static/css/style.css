@@ -1,14 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-form,input,button {
-    margin: 0 auto; /* set the left and right margins to "auto" */
-    width: 50%; /* set the width of the form */
-}
-
 body {
+
     height: 750px;
     background-image: url('../imgs/bg.jpg');
 }

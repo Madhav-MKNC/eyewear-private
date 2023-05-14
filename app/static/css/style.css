@@ -28,9 +28,10 @@ body {
 }
 
 .nav-list {
-    width: 70%;
+    width: 50%;
     display: flex;
     align-items: center;
+
 }
 
 .logo {
@@ -73,12 +74,12 @@ body {
 }
 
 .firstsection {
-
-
-    height: 400px;
+    height: 200px;
 }
 
-
+footer{
+    transform: translateY(10px);
+}
 
 .box-main {
     display: flex;
@@ -97,30 +98,7 @@ body {
     justify-content: center;
 }
 
-.secondhalf {
-    width: 30%;
-}
 
-.secondhalf img {
-    width: 70%;
-
-    border-radius: 150px;
-    display: block;
-    margin: auto;
-}
-.start_button {
-      background-color: black; 
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-    transform: translate(700px,-100px);
-
-    border-radius: 5px;
-}
 
 .text-big {
     font-family: 'Piazzolla', serif;
@@ -148,13 +126,13 @@ body {
 }
 
 .section {
-    height: 400px;
+    height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
     max-width: 90%;
     margin: auto;
-    transform: translateY(-200px);
+    /* transform: translateY(-200px); */
 
 }
 
@@ -189,18 +167,20 @@ input[type='file']{
     display: none;
 }
 label{
+    
     display: inline-block;
-    color: aliceblue;
+    color: white;
     background: black;
     text-align: center;
     padding: 15px 40px;
     font-size: 18px;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     user-select: none;
     cursor: pointer;
-    box-shadow: 5px 15px 25px rgba(0,0,0,0,0.35);
-    border-radius: 3px;
+    box-shadow: 5px 15px 25px rgba(0,0,0,0.35);
+    border-radius: 4px;
+    transform: translateX(500px);
 }
 label:active{
-    transform: scale(0.9);
+    transform: translateX(500px);
 }

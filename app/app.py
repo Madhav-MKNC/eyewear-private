@@ -24,7 +24,7 @@ def start(host="localhost", port=80, debug=True):
 # home page
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 # upload
 @app.route('/upload', methods=['POST'])

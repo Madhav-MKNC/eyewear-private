@@ -2,10 +2,10 @@
 
 # some imports here
 import requests
-from data.frames import mapping
 from bs4 import BeautifulSoup
 
 # data
+from data.frames import mapping
 frames = mapping
 
 # functions here
@@ -27,6 +27,20 @@ def get_new_filename(filename):
 # fetching results
 def fetch_lenses_from_lenskart(type):
     response = requests.get(frames[type])
-    soup = BeautifulSoup(response.text, 'html.parser').find_all("img-responsive")
-    lenses = [data['src'] for data in soup if 'src' in data.attrs]
-    return lenses
+    soup = BeautifulSoup(response.text, 'html.parser')
+    # lenses = [[data['href'], [data['src']]] for data in soup if 'src' in data.attrs and 'href' in data.attrs]
+    hrefs = [tag['href'] for tag in soup.find_all('a', href=True)]
+    srcs = [tag['src'] for tag in soup.find_all('img', src=True)]
+    print(len(hrefs), len(srcs))
+
+
+
+    # return lenses 
+
+
+if __name__ == "__main__":
+    # a = fetch_lenses_from_lenskart('c2')
+    # for i in a:
+    #     print(*i)
+    # print(0)
+    fetch_lenses_from_lenskart('c2')

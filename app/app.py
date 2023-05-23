@@ -11,7 +11,7 @@ from PIL import Image
 from utils import *
 
 # ML stuff
-from detector.engine import detect_faces
+# from detector.engine import detect_faces
 
 app = Flask(__name__)
 
@@ -28,7 +28,7 @@ def start(host="localhost", port=80, debug=True):
 # index page
 @app.route('/')
 def index():
-    return render_template('old_index.html')
+    return render_template('index.html')
 
 # upload
 @app.route('/upload', methods=['POST'])

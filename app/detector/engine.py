@@ -32,7 +32,6 @@ def cont_compare(a,b):
     cnt1 = a[0]
     cnt2 = b[0]
     ret = cv2.matchShapes(cnt1,cnt2,1,0.0)
-        
     return ret
 
 
@@ -42,25 +41,18 @@ def cont_compare(a,b):
 #     path = s+str(i)+".png"
     
 def get_contour(img):
-
     # img = cv2.imread(path)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(gray, 100, 200)
     ret, thresh = cv2.threshold(edges, 127, 255, cv2.THRESH_BINARY)
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    
     return contours
 
-
+# AWS Rekognition API
 def detect_faces(photo, bucket, region):
-    
-    session = boto3.Session(profile_name='Areeb',
-                            region_name=region)
+    session = boto3.Session(profile_name='Areeb', region_name=region)
     client = session.client('rekognition', region_name=region)
-
-    response = client.detect_faces(Image={'S3Object':{'Bucket':bucket,'Name':photo}},
-                                   Attributes=['ALL'])
-
+    response = client.detect_faces(Image={'S3Object':{'Bucket':bucket,'Name':photo}}, Attributes=['ALL'])
     print('Detected faces for ' + photo)
 #     for faceDetail in response['FaceDetails']:
 #         print('The detected face is between ' + str(faceDetail['AgeRange']['Low'])
@@ -75,36 +67,37 @@ def detect_faces(photo, bucket, region):
 #         print("Eyeglasses: " + str(faceDetail['Eyeglasses']))
 #         print("Face Occluded: " + str(faceDetail['FaceOccluded']))
 #         print("Emotions: " + str(faceDetail['Emotions'][0]))
+    return response['FaceDetails']
+    # return (response['FaceDetails'])
 
-    return (response['FaceDetails'])
+def get_bucket(age,gender,mustache,beard):
+    return f"{age}{gender}{mustache}{beard}"
 
-def vec(age,gender,mustache,beard):
-        return(str(age)+str(gender)+str(mustache)+str(beard))
-    
+
 for a in range(1,5):
     for b in range(1,3):
         for c in range(1,3):
             for d in range(1,4):
-                D[vec(a,b,c,d)]=[]
-                Dic[vec(a,b,c,d)]=[]
+                D[get_bucket(a,b,c,d)]=[]
+                Dic[get_bucket(a,b,c,d)]=[]
 
 
 def main():
-    s = "C:/Users/mohda/OneDrive/Desktop/Warpspeed/Contours/c"
+    PATH_TO_CONTOURS = "C:/Users/mohda/OneDrive/Desktop/Warpspeed/Contours/"
     for i in range(1,8):
-        path = s+str(i)+".png"
+        path = f"{PATH_TO_CONTOURS}c{i}.png"
         I = cv2.imread(path)
         cont.append(get_contour(I))
     
-    total_data = 345
+    total_data = len(os.listdir(PATH_TO_CONTOURS))
     bucket = "warpspeedgenai"
     region = "ap-south-1"
+
+    PATH_TO_DATA = "C:/Users/mohda/OneDrive/Desktop/classification/"
     # loc = "C:/Users/mohda/OneDrive/Desktop/classification/"
     for i in range(1,total_data+1):
-        path = str(i)+".jpg"
-        path_dat = "C:/Users/mohda/OneDrive/Desktop/classification/"
-        path_dat = path_dat+str(i)+".jpg"
-        Img = cv2.imread(path_dat)
+        data = f"{PATH_TO_DATA}{i}.jpg"
+        Img = cv2.imread(data)
         # cv2.imshow('Terminal',Img)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
@@ -143,7 +136,7 @@ def main():
             for b in range(1,3):
                 for c in range(1,3):
                     for d in range(1,4):
-                        (D[vec(a,b,c,d)]).append(get_contour(Img))
+                        (D[get_bucket(a,b,c,d)]).append(get_contour(Img))
 
 if __name__ == "__main__":
     main()
@@ -171,10 +164,10 @@ for a in range(1,5):
     for b in range(1,3):
         for c in range(1,3):
             for d in range(1,4):
-                if(assign_glasses(D[vec(a,b,c,d)],cont)!=-1):
-                    Dic[vec(a,b,c,d)] = cont[assign_glasses(D[vec(a,b,c,d)],cont)]
+                if(assign_glasses(D[get_bucket(a,b,c,d)],cont)!=-1):
+                    Dic[get_bucket(a,b,c,d)] = cont[assign_glasses(D[get_bucket(a,b,c,d)],cont)]
                 else:
-                    Dic[vec(a,b,c,d)] = cont[random.randint(0,6)]
+                    Dic[get_bucket(a,b,c,d)] = cont[random.randint(0,6)]
                     
                     
 

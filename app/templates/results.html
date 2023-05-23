@@ -5,6 +5,49 @@
 <head>
     <title>Simple web Development Template</title>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+    <script>
+        // CAMERA SETTINGS.
+        Webcam.set({
+            width: 220,
+            height: 190,
+            image_format: 'jpeg',
+            jpeg_quality: 100
+        });
+        Webcam.attach('#button');
+
+        // TAKE A SNAPSHOT.
+        takeSnapShot = function () {
+            Webcam.snap(function (data_uri) {
+                downloadImage('arun', data_uri);
+            });
+        }
+
+        // DOWNLOAD THE IMAGE.
+        downloadImage = function (name, datauri) {
+            var a = document.createElement('a');
+            a.setAttribute('download', name + '.png');
+            a.setAttribute('href', datauri);
+            a.click();
+        }
+
+        function myFunction() {
+            var input = document.getElementById("button");
+        }
+    //     input.addEventListener('change', (event) => {
+    // const image = event.target.files[0];
+
+    // const reader = new FileReader();
+
+    // reader.readAsDataURL(image);
+
+    // reader.addEventListener('load', () => {
+    //     localStorage.setItem('thumbnail', reader.result);
+    // });
+    // });
+	// 	}
+    </script>
+
 </head>
 
 <body scroll="no" style="overflow: hidden">
@@ -26,7 +69,7 @@
 
     <section class="firstsection">
         {% for lens in lenses %}
-        <a href="{{ lens[0] }}"><img src="{{ lens[1] }}"></a>
+            <a href="{{ lens.url }}"><img src="{{ lens.img_url }}"></a>
         {% endfor %}
     </section>
 

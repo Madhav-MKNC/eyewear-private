@@ -10,6 +10,9 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 from utils import *
 
+# ML stuff
+from detector.engine import detect_faces
+
 app = Flask(__name__)
 
 # start web app

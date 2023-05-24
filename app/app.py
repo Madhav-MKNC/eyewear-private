@@ -5,7 +5,7 @@ import os
 
 from flask import Flask
 from flask import render_template, redirect, request, url_for, send_file
-from werkzeug.utils import secure_filename
+# from werkzeug.utils import secure_filename
 
 from PIL import Image
 from utils import *
@@ -28,7 +28,7 @@ def start(host="localhost", port=80, debug=True):
 # index page
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('old_index.html')
 
 # upload
 @app.route('/upload', methods=['POST'])

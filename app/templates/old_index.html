@@ -1,16 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
 <head>
-    <title>Upload Image</title>
+  <title>Eyewear Recommendation Tool</title>
+  <link rel="stylesheet" type="text/css" href="css/old_style.css">
 </head>
-
 <body>
-    <h1>Upload Image</h1>
-    <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
-        <input type="file" name="file" id="file">
-        <button type="submit">Upload</button>
+  <header>
+    <h1>Eyewear Recommendation Tool</h1>
+  </header>
+  
+  <main>
+    <form action="result.html" method="post" enctype="multipart/form-data">
+      <label for="userImage">Upload Your Image:</label>
+      <input type="file" id="userImage" name="userImage" accept="image/*" required>
+      <button type="submit">Get Recommendations</button>
     </form>
+  </main>
 </body>
-
 </html>
